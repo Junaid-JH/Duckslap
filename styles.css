@@ -75,16 +75,16 @@ header > h1 {
   background-image: url("images/Duck\ on\ grass.jpg");
   margin: 10px;
   margin-right: 100px;
-  height: 150px;
-  width: 150px;
-  background-size: 170px 150px;
-  border-radius: 50px;
+  height: 140px;
+  width: 140px;
+  background-size: 160px 140px;
+  border-radius: 42px;
 }
 
 .duck-container > .duckslap {
   background-image: url("images/Duck\ being\ slapped.jpg");
   box-shadow: 0px 6px 5px #ccc;
-  border-radius: 50px;
+  border-radius: 42px;
 }
 
 .duck-container > div:hover {
