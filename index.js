@@ -17,7 +17,7 @@ let score = 0;
 let quack = new Audio("sounds/quack.mp3");
 let sneaky = new Audio("sounds/sneaky.mp3");
 let buzzer = new Audio("sounds/buzzer.mp3");
-
+let isFailureDisplayed = false;
 //Assigns 1st onClick event to all ducks
 document.querySelectorAll(".duck-container > div").forEach(function (element) {
   element.setAttribute("onclick", "initiateGame()");
@@ -69,12 +69,15 @@ function captureClick(className) {
     timer = timer - 100;
     //Else call the failure function
   } else {
-    failure();
+    if (!isFailureDisplayed) {
+      failure();
+    }
   }
 }
 
 //This function gets called whenever a user goes against the game's rules for progressing
 function failure() {
+  isFailureDisplayed = true;
   document.getElementById(holdingVal).classList.remove("duckslap");
   clearInterval(sneakyInterval);
   clearInterval(gameplayInterval);
@@ -90,6 +93,7 @@ function failure() {
         score +
         " \nRefresh the page to try again and better your score!"
     );
+    isFailureDisplayed = false;
   }, 100);
 }
 
@@ -109,7 +113,9 @@ function gameplayFunc() {
   //If no click event has been detected just before the next image pops up, failure function is called
   setTimeout(function () {
     if (!isClicked) {
-      failure();
+      if (!isFailureDisplayed) {
+        failure();
+      }
     }
     isClicked = false;
   }, timer);
